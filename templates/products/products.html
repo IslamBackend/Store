@@ -1,0 +1,35 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+
+<h1>
+    PRODUCTS
+</h1>
+<center>
+    <a href="?order=title" method="GET">Title</a>
+    <a href="?order=-title" method="GET">-Title</a>
+    <a href="?order=created_at" method="GET">Date</a>
+    <a href="?order=-created_at" method="GET">-Date</a>
+</center>
+{% for product in products %}
+<div class="card" style="width: 18rem;">
+    <img src="/media/{{product.image}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.rate }}🚀</p>
+        <p class="card-text">{{ product.price }}$</p>
+        {% for hashtag in products.hashtags.all %}
+        <a href="#" class="btn btn-primary">#{{ hashtag.title }}</a>
+        {% endfor %}
+        <a href="/products/{{ product.id }}/" class="btn btn-primary">More</a>
+    </div>
+</div>
+{% endfor %}
+<center><h3>
+    {% for page in pages %}
+    <a href="?page={{ page }}" method="GET">{{ page }}</a>
+    {% endfor %}
+</h3></center>
+
+
+{% endblock %}

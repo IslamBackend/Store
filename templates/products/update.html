@@ -1,0 +1,13 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+
+    <h1>CREATE UPDATE</h1>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+
+{% endblock %}
